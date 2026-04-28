@@ -22,7 +22,9 @@ xbindkeys
 
 
 widget() {
-xterm -fa 'Iosevka Fixed Curly Medium' -fs 10 -class "$1" -e "$@" &
+cls="$1"
+shift
+xterm -fa 'Iosevka Fixed Curly Medium' -fs 10 -class "$cls" -e "$@" &
 }
 
 widgets() {
