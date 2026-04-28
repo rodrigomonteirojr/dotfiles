@@ -1,2 +1,2 @@
 # dotfiles
-my configuration files for versioning
+my configuration files version controlled
