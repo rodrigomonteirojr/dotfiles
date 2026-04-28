@@ -44,8 +44,11 @@ case "$opt" in
 -n)
 printf "-name "
 ;;
-*)
+-*)
 printf "%s " "$opt"
+;;
+*)
+printf "'%s' " "$opt"
 ;;
 esac
 done
