@@ -1,0 +1,8 @@
+#!/bin/sh
+# Ensure Plan 9 FUSE mountpoints exist for user 'rodrigo'
+mkdir -p /mnt/font
+mkdir -p /mnt/plumb
+mkdir -p /mnt/acme
+
+chown rodrigo:rodrigo /mnt/font /mnt/plumb /mnt/acme
+chmod 755 /mnt/font /mnt/plumb /mnt/acme
