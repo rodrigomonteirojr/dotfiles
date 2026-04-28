@@ -1,0 +1,79 @@
+# === DO NOT CHANGE THIS BLOCK ===
+
+__init() {
+NAMESPACE=/tmp/ns."$USER".:0
+font=/mnt/font/Iosevka-Fixed-Curly-Medium/11a/font
+
+PLAN9=/home/rodrigo/Documents/plan9port
+PATH=$PATH:$PLAN9/bin
+PATH=$PATH:/home/rodrigo/.local/bin:/home/rodrigo/.cargo/bin
+
+# --- 2 lines hidden ---
+
+export PLAN9
+export PATH
+export NAMESPACE
+export font
+
+eval $(keychain --eval ssh_ids)
+}
+
+__init
+
+# == START OF RC ==
+
+PS1="\$PWD $(if (( USER_ID )); then print %; else print \#; fi) "
+export PS1
+
+alias just="just --color never"
+
+# translate some shorthands into find options
+translate() {
+typeset opt
+
+# default to name
+if [ "$#" -eq 1 ]; then
+printf "-name '%s'" "$1"
+shift
+fi
+
+while ! [ -z "$1" ]; do
+opt="$1"
+shift
+case "$opt" in
+-n)
+printf "-name "
+;;
+*)
+printf "%s " "$opt"
+;;
+esac
+done
+}
+
+dir() {
+typeset path="$(pwd)"
+typeset filter="-not -name '.*'"
+
+while ! [ -z "$1" ] ; do
+case "$1" in
+-f)
+;;
+*)
+path="$(realpath "$1")"
+shift
+;;
+esac
+
+if [ "$1" = "-f" ]; then
+shift
+filter="$(translate "$@")"
+fi
+
+break
+done
+
+# out:
+
+eval "find '${path}' -maxdepth 1 ${filter}"
+}
