@@ -74,7 +74,7 @@
 		</Active>
 		<Outline>#81C784</Outline>
 	</TrayStyle>
-	<TaskListStyle list="all" group="true">
+	<TaskListStyle list="all" group="false">
 		<Font>Sans-12</Font>
 		<Active>
 			<Foreground>#FFFFFF</Foreground>
