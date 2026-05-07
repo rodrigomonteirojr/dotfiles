@@ -149,6 +149,7 @@
 	<Key mask="A" key="F4">close</Key>
 	<Key mask="A" key="#">desktop#</Key>
 	<Key mask="A" key="F1">root:1</Key>
+	<Key key="F1">exec:/home/rodrigo/scripts/voice-cmd</Key>
 	<Key mask="A" key="F2">window</Key>
 	<Key mask="A" key="F10">maximize</Key>
 	<Key mask="A" key="Right">rdesktop</Key>
