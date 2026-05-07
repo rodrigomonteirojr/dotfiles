@@ -1,21 +1,15 @@
 # === DO NOT CHANGE THIS BLOCK ===
 
 __init() {
-NAMESPACE=/tmp/ns."$USER".:0
-font=/mnt/font/Iosevka-Fixed-Curly-Medium/11a/font
+PATH=$PATH:/home/rodrigo/.local/bin:/home/rodrigo/go/bin:/home/rodrigo/.cargo/bin:/home/rodrigo/scripts:/home/rodrigo/.npm_mod/bin
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/rodrigo/.local/lib
 
-PLAN9=/home/rodrigo/Documents/plan9port
-PATH=$PATH:$PLAN9/bin
-PATH=$PATH:/home/rodrigo/.local/bin:/home/rodrigo/.cargo/bin
-
-# --- 2 lines hidden ---
-
-export PLAN9
+export EDITOR=vis
+export VISUAL=vis
 export PATH
-export NAMESPACE
-export font
+export LD_LIBRARY_PATH
 
-eval $(keychain --eval ssh_ids)
+eval $(keychain --eval id_rsa id_ed25519)
 }
 
 __init
@@ -25,8 +19,23 @@ __init
 PS1="\$PWD $(if (( USER_ID )); then print %; else print \#; fi) "
 export PS1
 
-alias just="just --color never"
 
+problematic() {
+go vet 2>&1 | awk '!seen[$1]++' | cut -d':' -f1
+}
+
+alias h="history"
+alias gotest="go test -v ."
+alias just="just --color never"
+alias vi="vis"
+
+# AI hype train
+alias ai="fabric"
+alias wisdom="fabric --pattern extract_wisdom"
+alias spell="fabric --pattern fix_typos"
+alias code="aider --model r1"
+
+# Rodrigo Monteiro Junior - Tue Apr 28 15:16:47 -03 2026
 # translate some shorthands into find options
 translate() {
 typeset opt
@@ -54,6 +63,7 @@ esac
 done
 }
 
+# Rodrigo Monteiro Junior - Tue Apr 28 15:16:47 -03 2026
 dir() {
 typeset path="$(pwd)"
 typeset filter="-not -name '.*'"

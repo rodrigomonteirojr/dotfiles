@@ -1,24 +1,17 @@
-keyboard() {
-xset r rate 175 75
-}
-
-
 map_keys() {
-cat - <<EOF > ~/.xbindkeysrc
-"xdotool mousedown 2"
-  F13
-
-"xdotool mouseup 2"
-  release + F13
-EOF
-
-# special
 xmodmap -e "clear Lock"
 xmodmap -e "keycode 66 = F13"
 xset -r 66
-
-xbindkeys
 }
+
+keyboard() {
+xset r rate 175 75
+
+map_keys
+}
+
+
+mouse() :
 
 
 widget() {
@@ -29,13 +22,8 @@ xterm -fa 'Iosevka Fixed Curly Medium' -fs 10 -class "$cls" -e "$@" &
 
 widgets() {
 xrdb -merge /home/rodrigo/.Xresources
-widget Htop btop -c /home/rodrigo/.config/btop/btop.conf
-}
 
-
-plan9() {
-9 plumber
-9 fontsrv -m /mnt/font &
+widget Btop btop -c /home/rodrigo/.config/btop/btop.conf
 }
 
 
@@ -44,10 +32,21 @@ redshift &
 }
 
 
-keyboard
-map_keys
-widgets
-plan9
-effects
+audio() {
+pulseaudio --start
+}
 
-exec jwm
+
+wallpaper() {
+feh --bg-center /home/rodrigo/Documents/walls/a_painting_of_a_building_in_the_desert.png
+}
+
+
+keyboard
+mouse
+widgets
+effects
+audio
+wallpaper
+
+exec dbus-run-session jwm
