@@ -4,7 +4,7 @@
 		<Program icon="utilities-terminal" label="Terminal">sakura -l</Program>
 		<Menu icon="folder" label="Applications">
 			<Program icon="sound" label="Sound Monitor">pavucontrol</Program>
-			<Program icon="sys-monitor" label="System Monitor">exec:/home/rodrigo/scripts/system-monitor-widget</Program>
+			<Program icon="sys-monitor" label="System Monitor">/home/rodrigo/scripts/system-monitor-widget</Program>
 			<Program icon="web-browser" label="Web Browser">firefox</Program>
 			<Program icon="file-manager" label="File Manager">pcmanfm</Program>
 			<Program icon="text-editor" label="Text Editor">sam</Program>
