@@ -55,7 +55,7 @@
 		<Font>dejavu sans-10:bold</Font>
 		<Corner>3</Corner>
 		<Foreground>#2E7D32</Foreground>
-		<Background>#66BB6A</Background>
+		<Background>#A5D6A7</Background>
 		<Opacity>1.0</Opacity>
 		<Active>
 			<Foreground>#FFFFFF</Foreground>
